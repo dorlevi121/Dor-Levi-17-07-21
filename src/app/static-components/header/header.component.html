@@ -1,0 +1,18 @@
+<div class="header-wrapper">
+    <a class="logo" routerLink="/">
+        <img src="../../../assets/images/logo.png" alt="logo">
+        <p>Weather App</p>
+    </a>
+
+    <div class="menu">
+        <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" class="tab">Home</a>
+        <a routerLink="favorites" routerLinkActive="is-active" class="tab">Favorites</a>
+        <div class="actions">
+            <div class="dark-mode">
+                <img src="../../../assets/images/dark-mode.svg" alt="">
+            </div>
+            <p class="temperature-type" (click)="setTemperatureType(temperatureType == 'c' ? 'f' : 'c')">
+                {{temperatureType | titlecase}}</p>
+        </div>
+    </div>
+</div>

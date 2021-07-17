@@ -1,0 +1,121 @@
+@import "/src/assets/style/main.scss";
+
+.forecasts {
+  display: flex;
+  width: 100%;
+  background-color: $bg-light-color;
+  overflow: hidden;
+  border-radius: 10px;
+
+  & .current-day {
+    width: 35%;
+    display: inline;
+
+    & .header {
+      width: 95%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      text-align: center;
+      font-weight: 400;
+
+      & p {
+        margin: 0;
+        color: $gray-light;
+      }
+    }
+
+    & .content {
+      text-align: left;
+      padding: 20px 20px 10px;
+
+      & .city-name {
+        color: $gray-light;
+        font-size: $text-size-large;
+      }
+
+      & .temperature {
+        display: flex;
+        align-items: center;
+
+        & p {
+          font-size: 80px;
+          color: $white;
+          margin: 0;
+          margin-right: $margin-large;
+          font-weight: 700;
+        }
+
+        & img {
+          width: 20%;
+          height: auto;
+        }
+      }
+    }
+
+    & .bottom-content {
+      display: flex;
+      align-items: center;
+
+      & .icon {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: $margin-large;
+
+        & img {
+          width: 20px;
+          height: auto;
+        }
+
+        & p {
+          color: $gray-light;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  & .days {
+    width: 65%;
+    display: flex;
+
+    & .day {
+      width: 25%;
+
+      &:nth-child(even) {
+        background-color: $secondary-color;
+      }
+
+      & .header {
+        background: rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 10px;
+        font-weight: 400;
+
+        & p {
+          margin: 0;
+          color: $gray-light;
+        }
+      }
+
+      & .content {
+        padding: 50px 20px 10px;
+        text-align: center;
+
+        & img {
+          width: 50px;
+          height: auto;
+        }
+
+        & .temperature {
+          font-size: $text-size-large;
+          color: $white;
+        }
+      }
+    }
+  }
+}

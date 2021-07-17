@@ -1,0 +1,42 @@
+<div class="forecasts" *ngIf="city && fourDaysForecasts.length">
+    <div class="current-day">
+        <div class="header">
+            <p> {{getDayName(city?.LocalObservationDateTime )}}</p>
+            <p>{{city?.LocalObservationDateTime | date : 'ddMMM'}}</p>
+        </div>
+        <div class="content">
+            <p class="city-name">{{city?.CityDetails?.LocalizedName || 'No City'}}</p>
+            <div class="temperature">
+                <p>{{city?.Temperature?.Metric?.Value+ '°'}}</p>
+                <img [src]="'https://www.accuweather.com/images/weathericons/' + city.WeatherIcon + '.svg'" alt="">
+            </div>
+            <div class="bottom-content">
+                <div class="icon">
+                    <img src="../../../../assets/images/icon-wind.png" alt="wind speed">
+                    <p>{{city?.Wind.Speed?.Metric?.Value + ' ' + city?.Wind.Speed?.Metric?.Unit}}</p>
+                </div>
+                <div class="icon">
+                    <img src="../../../../assets/images/icon-compass.png" alt="wind direction">
+                    <p>{{city?.Wind.Direction?.Localized}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="days">
+        <div *ngFor="let day of fourDaysForecasts; let i=index" class="day" [style]="i==0 ? 'display: none;' : ''">
+            <div class="header" *ngIf="i > 0">
+                <p>{{getDayName(day?.Date )}}</p>
+            </div>
+            <div class="content">
+                <img [src]="'https://www.accuweather.com/images/weathericons/' + day.Day.Icon + '.svg'" alt="">
+
+                <p class="temperature">
+                    <span>{{day.Temperature.Minimum.Value + '°' | titlecase}}</span>
+                    <span>{{ ' - ' + day.Temperature.Maximum.Value + '°' | titlecase}}</span>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

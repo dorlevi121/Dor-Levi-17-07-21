@@ -1,0 +1,45 @@
+@import "./colors.scss";
+@import "./responsive.scss";
+@import "../animations/animation.scss";
+
+@mixin translateToCenter {
+  transform: translate(-50%, -50%);
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include translateToCenter;
+}
+
+@mixin main-title {
+  font-weight: 500;
+  font-size: $text-size-xl;
+  text-align: center;
+  color: $white;
+  padding-top: $margin-xl;
+
+  @include respond(desktop) {
+    padding: $margin-medium 0;
+    font-size: $text-size-xl-desktop;
+  }
+}
+
+@mixin defualt-text {
+  padding: $margin-small 0;
+  font-weight: 300;
+  font-size: $text-size-large;
+  text-align: center;
+  color: $white;
+
+  @include respond(desktop) {
+    padding: $margin-medium 0;
+  }
+}
+
+@mixin center-button {
+  text-align: center;
+  display: block;
+  margin: $margin-medium 0;
+}

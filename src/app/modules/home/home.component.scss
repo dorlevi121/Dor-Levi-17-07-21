@@ -1,0 +1,61 @@
+@import "/src/assets/style/main.scss";
+
+.home-wrapper {
+  position: relative;
+  width: 80%;
+  margin: auto;
+
+  & .location-selection {
+    margin-bottom: $margin-xl;
+
+    & input {
+      display: block;
+      width: 50%;
+      margin: auto;
+      padding: 20px 0;
+      border: none;
+      border-radius: 30px;
+      background-color: $bg-color;
+      color: $white;
+      padding-left: $margin-large;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+
+    & .autocomplete {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 50%;
+      max-height: 400%;
+      background: rgba($color: $bg-color, $alpha: 0.7);
+      overflow: auto;
+      z-index: 2;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 5px;
+
+      //   @include respond(desktop) {
+      //     width: 60%;
+      //   }
+
+      & .item {
+        font-size: $text-size-medium;
+        color: $white;
+        padding: $margin-small;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+}
