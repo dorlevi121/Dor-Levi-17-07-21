@@ -17,8 +17,22 @@
             <p>עיר לא נמצאה</p>
         </div> -->
     </div>
+    <div class="add-to-favorites">
+        <!-- like button -->
+        <div class="wrapper" (click)="favorites()">
+            <a #myDiv (click)="myDiv.classList.toggle('is-active')" [ngClass]="{'is-active' : isFavorites}"
+                class="like-button">
+                <i class="material-icons not-liked bouncy">favorite_border</i>
+                <i class="material-icons is-liked bouncy">favorite</i>
+                <span class="like-overlay"></span>
+            </a>
+        </div>
+        <!-- City Name -->
+        <div class="city-name">{{cuurentCity?.CityDetails?.LocalizedName + ', ' +
+            cuurentCity?.CityDetails?.Country.LocalizedName}}</div>
+    </div>
 
-    <weather-app-days-forecasts [currentDayForecasts]="cuurentCity"
-        [fourDaysForecasts]="fiveDaysForecasts" [city]="cuurentCity"></weather-app-days-forecasts>
+    <weather-app-days-forecasts [fourDaysForecasts]="fiveDaysForecasts" [city]="cuurentCity">
+    </weather-app-days-forecasts>
 
 </div>

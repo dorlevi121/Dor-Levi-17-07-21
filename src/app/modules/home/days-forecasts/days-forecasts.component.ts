@@ -11,7 +11,6 @@ import { SettingsService } from 'src/app/services/settings.service';
 })
 export class DaysForecastsComponent implements OnInit, OnDestroy {
 
-  @Input() currentDayForecasts: City;
   @Input() fourDaysForecasts: DailyForecasts[];
   @Input() city: City;
 
@@ -22,7 +21,7 @@ export class DaysForecastsComponent implements OnInit, OnDestroy {
 
   constructor(private settingService: SettingsService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.$temperatureType = this.settingService.temperatureTypeSubscription
       .subscribe(type => {
         this.temperatureType = type;
@@ -32,6 +31,12 @@ export class DaysForecastsComponent implements OnInit, OnDestroy {
   getDayName(dateString: string) {
     const dayNumber = new Date(dateString).getDay();
     return this.weekday[dayNumber]
+  }
+
+  cToF(celsius: number) {
+    let cTemp = celsius;
+    let cToFahr = cTemp * 9 / 5 + 32;
+    return cToFahr.toFixed();
   }
 
   ngOnDestroy(): void {

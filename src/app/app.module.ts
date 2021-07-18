@@ -9,7 +9,7 @@ import { HeaderComponent } from './static-components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,    
   ],
   imports: [
     BrowserModule,

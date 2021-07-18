@@ -1,4 +1,5 @@
 @import "/src/assets/style/main.scss";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 .home-wrapper {
   position: relative;
@@ -57,5 +58,147 @@
         }
       }
     }
+  }
+
+  & .add-to-favorites {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $margin-large;
+
+    & .city-name {
+      color: $grey-light;
+      font-size: $text-size-xl;
+      text-align: center;
+      font-weight: 500;
+      margin-left: $margin-small;
+    }
+  }
+}
+
+$fade-grey: #ededed;
+$heart: #ff4f8f;
+
+.wrapper {
+  cursor: pointer;
+
+  .like-button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $grey-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-decoration: none;
+    overflow: hidden;
+    .like-overlay {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: $heart;
+      transform: scale(0);
+      transition: all 0.4s;
+      z-index: 0;
+    }
+    i {
+      &.not-liked {
+        display: block;
+        color: $white;
+        position: relative;
+        z-index: 1;
+      }
+      &.is-liked {
+        display: none;
+        color: $white;
+        position: relative;
+        z-index: 1;
+      }
+    }
+    &.is-active {
+      .like-overlay {
+        transform: scale(1);
+      }
+      i {
+        &.not-liked {
+          display: none;
+        }
+        &.is-liked {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+//Watch me get bouncy
+@-webkit-keyframes bouncy {
+  from,
+  to {
+    -webkit-transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+  }
+}
+@keyframes bouncy {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+//Settings
+.bouncy {
+  -webkit-animation: bouncy 0.6s;
+  animation: bouncy 0.6s;
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+//Css Ninja link
+.link-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #6dacff;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s;
+  img {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+  &:hover {
+    transform: scale(1.1) rotate(180deg);
+    background: $heart;
   }
 }

@@ -5,9 +5,11 @@
             <p>{{city?.LocalObservationDateTime | date : 'ddMMM'}}</p>
         </div>
         <div class="content">
-            <p class="city-name">{{city?.CityDetails?.LocalizedName || 'No City'}}</p>
+            <p class="city-name">{{ city?.CityDetails?.LocalizedName || 'No City'}}</p>
             <div class="temperature">
-                <p>{{city?.Temperature?.Metric?.Value+ '°'}}</p>
+                <p>{{(temperatureType == 'c' ? city?.Temperature?.Metric?.Value :
+                    cToF(city?.Temperature?.Metric?.Value))
+                    + '°'}}</p>
                 <img [src]="'https://www.accuweather.com/images/weathericons/' + city.WeatherIcon + '.svg'" alt="">
             </div>
             <div class="bottom-content">
@@ -32,8 +34,10 @@
                 <img [src]="'https://www.accuweather.com/images/weathericons/' + day.Day.Icon + '.svg'" alt="">
 
                 <p class="temperature">
-                    <span>{{day.Temperature.Minimum.Value + '°' | titlecase}}</span>
-                    <span>{{ ' - ' + day.Temperature.Maximum.Value + '°' | titlecase}}</span>
+                    <span>{{(temperatureType == 'c' ? day.Temperature.Minimum.Value :
+                        cToF(day.Temperature.Minimum.Value)) + '°' | titlecase}}</span>
+                    <span>{{ ' - ' + (temperatureType == 'c' ? day.Temperature.Maximum.Value :
+                        cToF(day.Temperature.Maximum.Value)) + '°' | titlecase}}</span>
                 </p>
 
             </div>

@@ -16,7 +16,7 @@ export class SettingsService {
 
   initialTemperatureType() {
     const type = this.lsService.get('temperatureType');
-    if (type === 'fahrenheit') {
+    if (type === 'f') {
       this.temperatureTypeSubscription = new BehaviorSubject<'c' | 'f'>('f');
       this.temperatureType = 'f'
     }
