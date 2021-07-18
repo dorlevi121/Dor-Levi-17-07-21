@@ -7,11 +7,14 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class SettingsService {
 
+  isMobile: boolean = false;
+
   temperatureType: 'c' | 'f';
   temperatureTypeSubscription: BehaviorSubject<'c' | 'f'>;
 
   constructor(private lsService: LocalStorageService) {
     this.initialTemperatureType();
+    this.checkIsMobile();
   }
 
   initialTemperatureType() {
@@ -36,4 +39,11 @@ export class SettingsService {
     return this.temperatureType;
   }
 
+  private checkIsMobile() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      this.isMobile = true;
+    } else {
+      this.isMobile = false;
+    }
+  }
 }

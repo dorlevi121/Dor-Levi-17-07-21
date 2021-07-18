@@ -1,16 +1,19 @@
 @import "/src/assets/style/main.scss";
 
-
 .app-wrapper {
-    .header {
-        width: 100%;
-        background-color: $bg-color;
-    }
-    
-    .background {
-        background-image: url('../assets/images/bg.png');
-        background-size: cover;
-        padding: 70px 0;
-        min-height: 300px;
-    }
+  .header {
+    width: 100%;
+    background-color: $bg-color;
+  }
+
+  .app {
+    padding: 60px 0;
+  }
+  .background {
+    background-image: url("../assets/images/bg.png");
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    min-height: 400px;
+  }
 }

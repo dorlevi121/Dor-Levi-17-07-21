@@ -1,0 +1,72 @@
+@import "/src/assets/style/main.scss";
+
+.favorites-wrapper {
+  position: relative;
+  top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+
+  & button {
+    z-index: 9999;
+  }
+
+  & drag-scroll {
+    width: 100%;
+    z-index: 9999;
+    text-align: center;
+  }
+
+  & .day {
+    width: 23%;
+    height: 300px;
+    z-index: 9999;
+    background-color: $bg-light-color;
+    margin-left: $margin-small;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    &:nth-child(even) {
+      background-color: $secondary-color;
+    }
+
+    & .header {
+      background: rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 10px;
+      font-weight: 400;
+
+      & p {
+        margin: 0;
+        color: $grey-light;
+      }
+    }
+
+    & .content {
+      padding: 50px 20px 10px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & img {
+        width: 60px;
+        height: auto;
+      }
+
+      & .temperature {
+        font-size: $text-size-xl;
+        color: $white;
+        margin-left: $margin-small;
+      }
+    }
+
+    & .weather-text {
+      font-size: $text-size-large;
+      color: $white;
+      text-align: center;
+      font-weight: 100;
+    }
+  }
+}

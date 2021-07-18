@@ -12,8 +12,8 @@ export class AccuweatherService {
     return this.api.get('locations/v1/cities/autocomplete/', { q: searchTerm }).toPromise();
   }
 
-  getCity(cityId: string) {
-    return this.api.get('currentconditions/v1/' + cityId, {details: true}).toPromise();
+  getCity(cityId: string, params: {} = {}) {
+    return this.api.get('currentconditions/v1/' + cityId, params).toPromise();
   }
 
   getFiveDaysForecasts(cityId: string) {

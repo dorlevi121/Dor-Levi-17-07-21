@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FavoritesComponent } from './favorites.component';
 import { LocationsComponent } from './locations/locations.component';
 import { RouterModule, Routes } from '@angular/router';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 const routes: Routes = [{ path: '', component: FavoritesComponent }];
 
@@ -10,7 +11,8 @@ const routes: Routes = [{ path: '', component: FavoritesComponent }];
   declarations: [FavoritesComponent, LocationsComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    DragScrollModule
   ]
 })
 export class FavoritesModule { }

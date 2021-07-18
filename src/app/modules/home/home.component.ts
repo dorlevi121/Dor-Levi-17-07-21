@@ -239,10 +239,10 @@ export class HomeComponent implements OnInit {
         "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us"
       }
     ]
-    // this.accuweatherService.getFiveDaysForecasts(cityId)
-    //   .then((res: any) => {
-    //     this.fiveDaysForecasts = res.DailyForecasts;
-    //   });
+    this.accuweatherService.getFiveDaysForecasts(cityId)
+      .then((res: any) => {
+        this.fiveDaysForecasts = res.DailyForecasts;
+      });
   }
 
   getCities(searchTerm: string) {
@@ -399,10 +399,10 @@ export class HomeComponent implements OnInit {
           }
         }
       ]
-    // this.accuweatherService.getCities(searchTerm)
-    //   .then((res: any) => {
-    //     this.citiesList = [...res];
-    //   });
+    this.accuweatherService.getCities(searchTerm)
+      .then((res: any) => {
+        this.citiesList = [...res];
+      });
     if (this.citiesList?.length) {
       this.showAutocomplete = true;
     }
@@ -788,16 +788,16 @@ export class HomeComponent implements OnInit {
       CityDetails: city
     }
     this.getFiveDaysForecasts(city?.Key);
-    this.isFavorites = this.favoritesService.isFavorite(this.cuurentCity.CityDetails.Key);
+    this.isFavorites = this.favoritesService.isFavorite({ Key: this.cuurentCity.CityDetails.Key, Name: this.cuurentCity.CityDetails.LocalizedName });
 
-    // this.accuweatherService.getCity(city.Key)
-    // .then((res: City) => {
-    //   this.cuurentCity = res[0];      
-    //   this.cuurentCity.CityDetails = city;
-    // this.getFiveDaysForecasts(city?.Key);
-    //this.isFavorites = this.favoritesService.isFavorite(this.cuurentCity.CityDetails.Key);
-    // })
-    // .catch(err => {});
+    this.accuweatherService.getCity(city.Key, { details: true })
+      .then((res: City) => {
+        this.cuurentCity = res[0];
+        this.cuurentCity.CityDetails = city;
+        this.getFiveDaysForecasts(city?.Key);
+        this.isFavorites = this.favoritesService.isFavorite({ Key: this.cuurentCity.CityDetails.Key, Name: this.cuurentCity.CityDetails.LocalizedName });
+      })
+      .catch(err => { });
 
   }
 
@@ -808,6 +808,6 @@ export class HomeComponent implements OnInit {
     else {
       this.favoritesService.addToFavorite(this.cuurentCity);
     }
-    this.isFavorites = !this.isFavorites  
+    this.isFavorites = !this.isFavorites
   }
 }
