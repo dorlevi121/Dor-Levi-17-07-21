@@ -1,23 +1,23 @@
 # WeatherApp
 
-##Pages
+## Pages
 •	Home
 -	days-forecasts
 •	Favorites
--	Locations
-##Services
+-	Locations  
+## Services
 •	api
 •	Local Storage
 •	Favorites – hold favorites list, server request, favorites list manipulations
 •	Settings – temperature type, theme type, location, current city
 •	Accuweather – all server request
-##Features
+## Features
 •	Ask the user location
 •	Display temperature in Celsius and Fahrenheit
 •	Display Tel Aviv weather by default
 •	Search city by autocomplete
 •	Full compatibility to mobile devices
-##API
+## API
 GET Current Conditions 
 Resource URL: http://dataservice.accuweather.com/currentconditions/v1/{locationKey}
 5 Days of Daily Forecasts
