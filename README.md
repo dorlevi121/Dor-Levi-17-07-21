@@ -1,10 +1,10 @@
 # WeatherApp
 
 ## Pages
-•	Home
--	days-forecasts  
+ •	Home
+  -	days-forecasts  
 •	Favorites  
--	Locations  
+  -	Locations  
 ## Services
 •	api
 •	Local Storage
