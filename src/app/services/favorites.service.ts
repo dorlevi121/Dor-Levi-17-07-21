@@ -33,14 +33,13 @@ export class FavoritesService {
     await Promise.all(this.favoritesKeys.map((item) => {
       return this.acciweatherService.getCity(item.Key).then(res => {
         const city: City = res[0];
-        city.CityDetails = {AdministrativeArea: null,Country:null,Rank:null,Type:null,Version:null,Key:item.Key,LocalizedName:item.Name};
+        city.CityDetails = { AdministrativeArea: null, Country: null, Rank: null, Type: null, Version: null, Key: item.Key, LocalizedName: item.Name };
         return city;
       }).then(data => {
         return data;
       })
     }))
       .then(cities => {
-        console.log(cities);
         this.favoritesCities = cities;
       });
     return this.favoritesCities;

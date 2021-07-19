@@ -1,4 +1,4 @@
-<div class="header-wrapper">
+<div class="header-wrapper" [ngStyle]="{'background-color': isDarkMode ? '#8C8D93' : ''}">
     <a class="logo" routerLink="/">
         <img src="../../../assets/images/logo.png" alt="logo">
         <p>Weather App</p>
@@ -8,8 +8,9 @@
         <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" class="tab">Home</a>
         <a routerLink="favorites" routerLinkActive="is-active" class="tab">Favorites</a>
         <div class="actions">
-            <div class="dark-mode">
-                <img src="../../../assets/images/dark-mode.svg" alt="">
+            <div class="dark-mode" (click)="setDarkMode()">
+                <img *ngIf="!isDarkMode" src="../../../assets/images/sun.svg" alt="">
+                <img *ngIf="isDarkMode" src="../../../assets/images/moon.svg" alt="">
             </div>
             <p class="temperature-type" (click)="setTemperatureType(temperatureType == 'c' ? 'f' : 'c')">
                 {{temperatureType | titlecase}}</p>

@@ -1,22 +1,11 @@
 <div class="favorites-wrapper" *ngIf="favoritesCities?.length">
-    <button *ngIf="favoritesCities?.length > 4 && !isMobile" (click)="moveLeft()">Left</button>
-    <drag-scroll #carousel [drag-scroll-disabled]="true" [snap-duration]="200" >
-        <div *ngFor="let day of favoritesCities; let i=index" class="day" drag-scroll-item>
-            <div class="header">
-                <p>{{day?.CityDetails?.LocalizedName || 'No City Name'}}</p>
-            </div>
-            <div class="content">
-                <img [src]="'https://www.accuweather.com/images/weathericons/' + day?.WeatherIcon+ '.svg'" alt="">
-                <p class="temperature">
-                    <span>{{(temperatureType == 'c' ? day.Temperature.Metric.Value :
-                        cToF(day.Temperature.Imperial.Value)) + '°' | titlecase}}</span>
-                </p>
-            </div>
-            <p class="weather-text">
-                {{ day?.WeatherText}}
-            </p>
+    <img src="../../../assets/images/arrow.svg" class="arrow left" *ngIf="favoritesCities?.length > 4 || isMobile"
+        (click)="moveLeft()" />
+    <drag-scroll #carousel [drag-scroll-disabled]="isMobile ? false : true" [snap-duration]="200">
+        <div *ngFor="let city of favoritesCities;" (click)="navigate(city)" class="day" drag-scroll-item>
+            <weather-app-locations [city]="city"></weather-app-locations>
         </div>
-    </drag-scroll >
-    <button *ngIf="favoritesCities?.length > 4 && !isMobile" (click)="moveRight()">Right</button>
-
+    </drag-scroll>
+    <img src="../../../assets/images/arrow.svg" class="arrow right" *ngIf="favoritesCities?.length > 4 || isMobile"
+        (click)="moveRight()" />
 </div>

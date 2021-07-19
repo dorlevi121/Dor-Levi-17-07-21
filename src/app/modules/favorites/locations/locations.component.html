@@ -1,1 +1,15 @@
-<p>locations works!</p>
+<div class="city-wrapper">
+    <div class="header">
+        <p>{{city?.CityDetails?.LocalizedName || 'No City Name'}}</p>
+    </div>
+    <div class="content">
+        <img [src]="'https://www.accuweather.com/images/weathericons/' + city?.WeatherIcon+ '.svg'" alt="">
+        <p class="temperature">
+            <span>{{(temperatureType == 'c' ? city.Temperature.Metric.Value :
+                cToF(city.Temperature.Imperial.Value)) + '°' | titlecase}}</span>
+        </p>
+    </div>
+    <p class="weather-text">
+        {{ city?.WeatherText}}
+    </p>
+</div>

@@ -12,9 +12,13 @@ export class SettingsService {
   temperatureType: 'c' | 'f';
   temperatureTypeSubscription: BehaviorSubject<'c' | 'f'>;
 
+  isDarkMode: boolean;
+  isDarkModeubscription: BehaviorSubject<boolean>;
+
   constructor(private lsService: LocalStorageService) {
     this.initialTemperatureType();
     this.checkIsMobile();
+    this.isDarkModeubscription = new BehaviorSubject<boolean>(false);
   }
 
   initialTemperatureType() {
@@ -37,6 +41,15 @@ export class SettingsService {
 
   getTemperatureType(): 'c' | 'f' {
     return this.temperatureType;
+  }
+
+  setDarkMode(mode: boolean) {
+    this.isDarkMode = mode;
+    this.isDarkModeubscription.next(mode);
+  }
+
+  getDarkMode(mode: boolean) {
+    return this.isDarkMode;
   }
 
   private checkIsMobile() {

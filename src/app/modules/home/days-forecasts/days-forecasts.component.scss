@@ -7,6 +7,10 @@
   overflow: hidden;
   border-radius: 10px;
 
+  @include respond(phone) {
+    flex-direction: column;
+  }
+
   & .current-day {
     width: 35%;
     display: inline;
@@ -60,6 +64,10 @@
       display: flex;
       align-items: center;
 
+      @include respond(phone) {
+        justify-content: center;
+      }
+
       & .icon {
         display: flex;
         justify-content: space-between;
@@ -82,6 +90,10 @@
   & .days {
     width: 65%;
     display: flex;
+
+    @include respond(phone) {
+      width: 100%;
+    }
 
     & .day {
       width: 25%;
@@ -106,9 +118,17 @@
         padding: 50px 20px 10px;
         text-align: center;
 
+        @include respond(phone) {
+          padding: 20px 20px 10px;
+        }
+
         & img {
           width: 50px;
           height: auto;
+
+          @include respond(phone) {
+            width: 35px;
+          }
         }
 
         & .temperature {

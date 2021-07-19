@@ -1,5 +1,5 @@
 <div class="app-wrapper">
-  <div class="header">
+  <div class="header" [ngStyle]="{'background-color': isDarkMode ? '#8C8D93' : ''}">
     <weather-app-header></weather-app-header>
   </div>
   <div class="background"></div>
@@ -8,3 +8,5 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<weather-app-toast *ngIf="toastDetails.show" [popupDetails]="toastDetails"></weather-app-toast>

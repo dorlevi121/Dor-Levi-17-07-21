@@ -4,7 +4,7 @@
             <input type="text" placeholder="Find your location..." autocomplete="off" formControlName="autocomplete">
             <div class="autocomplete" *ngIf="citiesList?.length && showAutocomplete">
                 <div *ngFor="let city of citiesList" class="item" (click)="pickCity(city)">
-                    {{city.LocalizedName}}
+                    {{city?.LocalizedName}}
                 </div>
             </div>
         </form>
@@ -29,7 +29,7 @@
         </div>
         <!-- City Name -->
         <div class="city-name">{{cuurentCity?.CityDetails?.LocalizedName + ', ' +
-            cuurentCity?.CityDetails?.Country.LocalizedName}}</div>
+            (cuurentCity?.CityDetails?.Country?.LocalizedName || '')}}</div>
     </div>
 
     <weather-app-days-forecasts [fourDaysForecasts]="fiveDaysForecasts" [city]="cuurentCity">

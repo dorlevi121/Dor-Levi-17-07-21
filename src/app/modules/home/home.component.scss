@@ -9,6 +9,10 @@
   & .location-selection {
     margin-bottom: $margin-xl;
 
+    @include respond(phone) {
+      margin-bottom: $margin-medium;
+    }
+
     & input {
       display: block;
       width: 50%;
@@ -20,12 +24,20 @@
       color: $white;
       padding-left: $margin-large;
 
+      @include respond(phone) {
+        width: 80%;
+      }
+
       &:focus {
         outline: none;
       }
 
       &::placeholder {
         font-size: 14px;
+
+        @include respond(phone) {
+          font-size: 16px;
+        }
       }
     }
 
@@ -43,9 +55,10 @@
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 5px;
 
-      //   @include respond(desktop) {
-      //     width: 60%;
-      //   }
+      @include respond(phone) {
+        width: 80%;
+        max-height: 50%;
+      }
 
       & .item {
         font-size: $text-size-medium;
@@ -72,6 +85,10 @@
       text-align: center;
       font-weight: 500;
       margin-left: $margin-small;
+
+      @include respond(phone) {
+        font-size: 28px;
+      }
     }
   }
 }

@@ -1,0 +1,20 @@
+@import "/src/assets/style/main.scss";
+
+.toast-wrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 20px 100px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.success {
+  background-color: #4bb543;
+}
+
+.danger {
+  background-color: #d9534f;
+}

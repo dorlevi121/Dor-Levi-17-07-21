@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TemperatureTypePipe } from './pipes/temperature-type.pipe';
+import { ToastComponent } from './toast/toast.component';
 
 
 
 @NgModule({
-  declarations: [TemperatureTypePipe],
+  declarations: [ToastComponent],
   imports: [
     CommonModule,
   ],
   exports: [
-    TemperatureTypePipe
+    ToastComponent
   ]
 })
 export class SharedModule { }

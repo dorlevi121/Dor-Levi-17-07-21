@@ -1,5 +1,4 @@
 @import "/src/assets/style/main.scss";
-
 .app-wrapper {
   .header {
     width: 100%;
@@ -8,7 +7,12 @@
 
   .app {
     padding: 60px 0;
+
+    @include respond(phone) {
+      padding: 20px 0;
+    }
   }
+
   .background {
     background-image: url("../assets/images/bg.png");
     background-size: cover;

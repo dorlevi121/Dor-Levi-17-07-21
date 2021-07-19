@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SettingsService } from 'src/app/services/settings.service';
 
@@ -12,12 +12,24 @@ export class HeaderComponent implements OnInit, OnInit {
   public temperatureType: 'c' | 'f';
   private $temperatureType: Subscription;
 
-  constructor(private settingService: SettingsService) { }
+  public isDarkMode: boolean;
+  private $isDarkMode: Subscription;
+
+  constructor(private elementRef: ElementRef, private settingService: SettingsService) { }
 
   ngOnInit(): void {
     this.$temperatureType = this.settingService.temperatureTypeSubscription
       .subscribe(type => {
         this.temperatureType = type;
+      });
+
+    this.$isDarkMode = this.settingService.isDarkModeubscription
+      .subscribe(mode => {
+        this.isDarkMode = mode;
+        // if (this.isDarkMode)
+        //   this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '';
+        // else
+        //   this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#1e202b';
       })
   }
 
@@ -25,9 +37,15 @@ export class HeaderComponent implements OnInit, OnInit {
     this.settingService.setTemperatureType(type);
   }
 
+  setDarkMode() {
+    this.settingService.setDarkMode(!this.isDarkMode);
+  }
+
   ngOnDestroy(): void {
     if (this.$temperatureType)
-      this.$temperatureType.unsubscribe()
+      this.$temperatureType.unsubscribe();
+    if (this.$isDarkMode)
+      this.$isDarkMode.unsubscribe();
   }
 
 }
