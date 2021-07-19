@@ -1,27 +1,31 @@
 # WeatherApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
+##Pages
+•	Home
+-	days-forecasts
+•	Favorites
+-	Locations
+##Services
+•	api
+•	Local Storage
+•	Favorites – hold favorites list, server request, favorites list manipulations
+•	Settings – temperature type, theme type, location, current city
+•	Accuweather – all server request
+##Features
+•	Ask the user location
+•	Display temperature in Celsius and Fahrenheit
+•	Display Tel Aviv weather by default
+•	Search city by autocomplete
+•	Full compatibility to mobile devices
+##API
+GET Current Conditions 
+Resource URL: http://dataservice.accuweather.com/currentconditions/v1/{locationKey}
+5 Days of Daily Forecasts
+Resource URL: http://dataservice.accuweather.com/forecasts/v1/daily/5day/{locationKey}
+Autocomplete search
+Resource URL: http://dataservice.accuweather.com/locations/v1/cities/autocomplete ?apikey= &q=
+Params:
+•	Apikey 
+•	q – Search terms
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
