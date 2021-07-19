@@ -2,8 +2,8 @@
 
 ## Pages
 •	Home
--	days-forecasts
-•	Favorites
+-	days-forecasts  
+•	Favorites  
 -	Locations  
 ## Services
 •	api
