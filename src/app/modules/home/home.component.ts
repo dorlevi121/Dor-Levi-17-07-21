@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   public fiveDaysForecasts: DailyForecasts[];
   public showAutocomplete: boolean = false;
   public isFavorites: boolean = false;
+  public cityLoader: boolean = false;
 
   private defaultCity: DenormalizedCity = {
     "Version": 1,
@@ -54,19 +55,18 @@ export class HomeComponent implements OnInit {
           this.pickCity(a)
         }
       }
-
     });
+
     this.pickCity(this.defaultCity)
 
     this.form.get('autocomplete').valueChanges
       .pipe(debounceTime(400))
       .subscribe(value => {
-        if (!value.length) {
+        this.cityLoader = true;
+        if (!value.length)
           this.showAutocomplete = false;
-        }
-        else {
+        else
           this.getCities(value);
-        }
       });
 
     this.getUserLocation();
@@ -126,10 +126,20 @@ export class HomeComponent implements OnInit {
           type: 'danger',
           text: err.Message || 'Server Error'
         });
+      })
+      .finally(() => {
+        this.cityLoader = false;
+        if (this.citiesList?.length) {
+          this.showAutocomplete = true;
+        }
+        else {
+          this.toastService.setText({
+            show: true,
+            type: 'danger',
+            text: 'City not found!'
+          });
+        }
       });
-    if (this.citiesList?.length) {
-      this.showAutocomplete = true;
-    }
   }
 
   pickCity(city: DenormalizedCity) {
@@ -155,21 +165,19 @@ export class HomeComponent implements OnInit {
 
   favorites() {
     if (this.isFavorites) {
-      console.log('s');
-      
       this.favoritesService.removeFromFavorites(this.cuurentCity);
       this.toastService.setText({
         show: true,
-        type: 'success',
-        text: `You added ${this.cuurentCity?.CityDetails?.LocalizedName || 'city'} to favorites`
+        type: 'danger',
+        text: `You removed ${this.cuurentCity?.CityDetails?.LocalizedName || 'city'} to favorites`
       });
     }
     else {
       this.favoritesService.addToFavorite(this.cuurentCity);
       this.toastService.setText({
         show: true,
-        type: 'danger',
-        text: `You removed ${this.cuurentCity?.CityDetails?.LocalizedName || 'city'} to favorites`
+        type: 'success',
+        text: `You added ${this.cuurentCity?.CityDetails?.LocalizedName || 'city'} to favorites`
       });
     }
     this.isFavorites = !this.isFavorites

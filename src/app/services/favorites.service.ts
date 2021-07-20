@@ -46,7 +46,13 @@ export class FavoritesService {
   }
 
   isFavorite(city: FavoriteCity): boolean {
-    return this.favoritesKeys.indexOf(city) === -1 ? false : true;
+    let ans = false
+    this.favoritesKeys.forEach(c => {
+      if (c.Key == city.Key)
+        ans = true;
+    });
+
+    return ans;
   }
 
 }
