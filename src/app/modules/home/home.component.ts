@@ -136,7 +136,7 @@ export class HomeComponent implements OnInit {
           this.toastService.setText({
             show: true,
             type: 'danger',
-            text: 'City not found!'
+            text: 'City not found! '
           });
         }
       });
@@ -144,7 +144,6 @@ export class HomeComponent implements OnInit {
 
   pickCity(city: DenormalizedCity) {
     this.showAutocomplete = false;
-    this.getFiveDaysForecasts(city?.Key);
 
     this.accuweatherService.getCity(city.Key, { details: true })
       .then((res: City) => {
